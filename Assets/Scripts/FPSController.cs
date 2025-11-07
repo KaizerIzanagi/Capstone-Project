@@ -1,10 +1,11 @@
+using TMPro;
 using UnityEngine;
 
 public class FPSController : MonoBehaviour
 {
     [Header("Movement Speeds")]
-    [SerializeField] private float _walkSpeed = 3.0f;
-    [SerializeField] private float _sprintMultiplier = 2.0f;
+    [SerializeField] public float _walkSpeed = 3.0f;
+    [SerializeField] public float _sprintMultiplier = 2.0f;
     // I dunno, maybe sprinting? I'm still unsure I'm just laying out the groundwork here.
 
     [Header("Jump Parameters")]
@@ -23,12 +24,20 @@ public class FPSController : MonoBehaviour
     [SerializeField] private KeyCode _sprintKey = KeyCode.LeftShift;
     [SerializeField] private KeyCode _jumptKey = KeyCode.Space;
 
+    [Header("Stamina")]
+    [SerializeField] private float _stamina;
+    [SerializeField] private GameObject _staminaObj;
+    [SerializeField] private TextMeshProUGUI _staminaText;
+
     private Camera _mainCamera;
     private float _verticalRotation;
     private Vector3 _currentMovement = Vector3.zero;
     private CharacterController _characterController;
-    void Start()
+    void Awake()
     {
+        _stamina = 100f;
+        _staminaObj = GameObject.Find("Stamina");
+        _staminaText = _staminaObj.GetComponent<TextMeshProUGUI>();
         _characterController = GetComponent<CharacterController>();
         _mainCamera = Camera.main;
         Cursor.lockState = CursorLockMode.Locked;
@@ -40,11 +49,26 @@ public class FPSController : MonoBehaviour
     {
         HandleMovement();
         HandleRotation();
+
+        _staminaText.text = ("Stamina: " + _stamina);
     }
 
     void HandleMovement()
     {
         float speedMultiplier = Input.GetKey(_sprintKey) ? _sprintMultiplier : 1f;
+        if (Input.GetKey(_sprintKey))
+        {
+            _stamina -= Time.deltaTime * 5;
+        }
+        else
+        {
+            _stamina += Time.deltaTime * 4;
+        }
+        if (_stamina > 100)
+        {
+            _stamina = 100;
+        }
+
         float verticalSpeed = Input.GetAxis(_verticalMoveInput) * _walkSpeed * speedMultiplier;
         float horizontalSpeed = Input.GetAxis(_horizontalMoveInput) * _walkSpeed * speedMultiplier;
 

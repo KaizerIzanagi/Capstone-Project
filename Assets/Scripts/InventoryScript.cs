@@ -18,7 +18,7 @@ public class InventoryScript : MonoBehaviour
     public GameObject inventoryList;
     public TextMeshProUGUI inventoryText;
     public float currentInventoryCapacity = 0f;
-    public float maxInventoryCapacity = 50f;
+    public float maxInventoryCapacity = 999f;
     public List<string> _inventory = new List<string>();
 
     void Awake()

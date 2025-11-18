@@ -32,7 +32,7 @@ public class WaterRiseScript : MonoBehaviour
             Debug.Log("Collision with Player");
         }
 
-        else if (other.gameObject.name == "Loose Wire")
+        if (other.CompareTag("Hazard"))
         {
             Debug.Log("Water is currently Electric Powered");
             waterColor.material.color = Color.yellow;

@@ -51,7 +51,17 @@ public class InventoryScript : MonoBehaviour
 
             EncumberChecker();
         // THIS IS NOT WORKING:
-        inventoryText.text = "Inventory: " + "\n\n" + _inventory.Count.ToString();
+        
+        //inventoryText.text = "Inventory: " + "\n\n" + _inventory.Count.ToString();
+        Debug.Log(_inventory.Count);
+
+        int _inv = 0;
+
+        if (_inv < 0) return;
+        for (_inv = 0; _inv < 8; _inv++) {
+            inventoryText.text = "Inventory: " + "\n\n" + _inventory[_inv].ToString();
+        }
+        
         
     }
 

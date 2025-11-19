@@ -10,14 +10,13 @@ public enum FloodStage
 public class WaterRiseScript : MonoBehaviour
 {
     public GameObject water;
-    public GameObject player;
+    public Renderer waterColor;
     public float waterRise;
     public FloodStage stage;
     void Awake()
     {
         water = this.gameObject;
-        player = GameObject.Find("FPSController");
-        
+        waterColor = GetComponent<Renderer>();
     }
 
     // Update is called once per frame
@@ -28,9 +27,15 @@ public class WaterRiseScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == player)
+        if (other.gameObject.name == "FPSController")
         {
             Debug.Log("Collision with Player");
+        }
+
+        if (other.CompareTag("Hazard"))
+        {
+            Debug.Log("Water is currently Electric Powered");
+            waterColor.material.color = Color.yellow;
         }
     }
 

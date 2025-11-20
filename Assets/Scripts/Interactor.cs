@@ -32,7 +32,7 @@ public class Interactor : MonoBehaviour
             {
                 interactable.Interact(this);
             }
-
+            _pickupText.text = interactable.InteractionPrompt;
             _pickupPrompt.SetActive(true);
         }
         else

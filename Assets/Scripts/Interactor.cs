@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,7 +16,7 @@ public class Interactor : MonoBehaviour
 
     private void Awake()
     {
-        _pickupPrompt = GameObject.Find("Pickup Prompt");
+        _pickupPrompt = GameObject.FindGameObjectWithTag("PickupUI");
         _pickupText = _pickupPrompt.GetComponent<TextMeshProUGUI>();
         _pickupPrompt.SetActive(false);
     }
@@ -33,7 +34,9 @@ public class Interactor : MonoBehaviour
                 interactable.Interact(this);
             }
 
+            //Shows which object the player is interacting with.
             _pickupPrompt.SetActive(true);
+            _pickupText.text = "Press \"E\" to pick up " + _colliders[0].name;
         }
         else
         {

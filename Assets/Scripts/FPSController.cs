@@ -6,6 +6,7 @@ public class FPSController : MonoBehaviour
     [Header("Movement Speeds")]
     [SerializeField] public float _walkSpeed = 3.0f;
     [SerializeField] public float _sprintMultiplier = 2.0f;
+    [SerializeField] public float _waterWalkSpeed = 1.0f;
     // I dunno, maybe sprinting? I'm still unsure I'm just laying out the groundwork here.
 
     [Header("Jump Parameters")]
@@ -28,6 +29,8 @@ public class FPSController : MonoBehaviour
     [SerializeField] private float _stamina;
     [SerializeField] private GameObject _staminaObj;
     [SerializeField] private TextMeshProUGUI _staminaText;
+
+    public bool onWater = false;
 
     private Camera _mainCamera;
     private float _verticalRotation;
@@ -69,8 +72,8 @@ public class FPSController : MonoBehaviour
             _stamina = 100;
         }
 
-        float verticalSpeed = Input.GetAxis(_verticalMoveInput) * _walkSpeed * speedMultiplier;
-        float horizontalSpeed = Input.GetAxis(_horizontalMoveInput) * _walkSpeed * speedMultiplier;
+        float verticalSpeed = Input.GetAxis(_verticalMoveInput) * (onWater ? _waterWalkSpeed : _walkSpeed) * speedMultiplier;
+        float horizontalSpeed = Input.GetAxis(_horizontalMoveInput) * (onWater ? _waterWalkSpeed : _walkSpeed) * speedMultiplier;
 
         Vector3 horizontalMovemenet = new Vector3 (horizontalSpeed, 0, verticalSpeed);
         horizontalMovemenet = transform.rotation * horizontalMovemenet;
@@ -108,5 +111,10 @@ public class FPSController : MonoBehaviour
         _verticalRotation -= Input.GetAxis(_mouseYInput) * _mouseSensitivity;
         _verticalRotation = Mathf.Clamp(_verticalRotation, -upDownRange, upDownRange);
         _mainCamera.transform.localRotation = Quaternion.Euler(_verticalRotation, 0, 0);
+    }
+
+    public void ToggleOnWater(bool value)
+    {
+        onWater = value;    
     }
 }

@@ -4,21 +4,17 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-//Obsolete Enum
-/*
+
 public enum EncumberedState
 {
     Free,
     Encumbered,
     Overencumbered
 }
-*/
 public class InventoryScript : MonoBehaviour
 {
-    //Obsolete Variable
-    //[SerializeField] private EncumberedState _encumberedState;
+    [SerializeField] private EncumberedState _encumberedState;
     [SerializeField] private FPSController _fpsController;
-    
     public GameObject inventoryList;
     public TextMeshProUGUI inventoryText;
     public float currentInventoryCapacity = 0f;
@@ -37,8 +33,6 @@ public class InventoryScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Obsolete Code
-        /*
         if (currentInventoryCapacity > maxInventoryCapacity) 
         {
             if (currentInventoryCapacity > (maxInventoryCapacity + (maxInventoryCapacity * 0.10))) 
@@ -54,10 +48,11 @@ public class InventoryScript : MonoBehaviour
         {
             _encumberedState = EncumberedState.Free;
         }
-        
-        EncumberChecker();
-        */
 
+            EncumberChecker();
+        // THIS IS NOT WORKING:
+        
+        //inventoryText.text = "Inventory: " + "\n\n" + _inventory.Count.ToString();
         Debug.Log(_inventory.Count);
 
         int _inv = 0;
@@ -70,8 +65,6 @@ public class InventoryScript : MonoBehaviour
         
     }
 
-    //Obsolete Code
-    /*
     public void EncumberChecker()
     {
         switch (_encumberedState) 
@@ -95,5 +88,4 @@ public class InventoryScript : MonoBehaviour
                 break;
         }
     }
-    */
 }

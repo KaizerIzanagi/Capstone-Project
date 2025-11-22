@@ -613,6 +613,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Loose Wire (temporary)
       objectReference: {fileID: 0}
+    - target: {fileID: 708792742668140444, guid: 549dcccca040cb14a8823319f9a69266, type: 3}
+      propertyPath: m_TagString
+      value: Hazard
+      objectReference: {fileID: 0}
     - target: {fileID: 3505109823136847342, guid: 549dcccca040cb14a8823319f9a69266, type: 3}
       propertyPath: m_LocalPosition.x
       value: 45.4
@@ -2348,7 +2352,7 @@ GameObject:
   - component: {fileID: 508216250}
   m_Layer: 5
   m_Name: Pickup Prompt
-  m_TagString: Untagged
+  m_TagString: PromptUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4252,7 +4256,7 @@ GameObject:
   - component: {fileID: 870308967}
   m_Layer: 5
   m_Name: PhaseTimer
-  m_TagString: Untagged
+  m_TagString: PhaseTimer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4926,7 +4930,7 @@ GameObject:
   - component: {fileID: 1204531089}
   m_Layer: 5
   m_Name: PhaseEndIndicator
-  m_TagString: Untagged
+  m_TagString: MultiUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6605,7 +6609,7 @@ GameObject:
   - component: {fileID: 1687761954}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: BlackScreenText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7222,6 +7226,7 @@ GameObject:
   - component: {fileID: 1808669885}
   - component: {fileID: 1808669884}
   - component: {fileID: 1808669883}
+  - component: {fileID: 1808669887}
   m_Layer: 0
   m_Name: Exit
   m_TagString: Untagged
@@ -7318,6 +7323,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1697523169}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1808669887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808669882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81f71a912ace402408ad4e4a97add515, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prompt: 
 --- !u!1001 &1823576206
 PrefabInstance:
   m_ObjectHideFlags: 0

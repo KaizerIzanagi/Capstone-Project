@@ -10,8 +10,8 @@ public class PhaseTimer : MonoBehaviour
     void Awake()
     {
         _phaseTimer = 120f;
-        _timer = GameObject.Find("PhaseTimer");
-        _phaseEndIndicator = GameObject.Find("PhaseEndIndicator");
+        _timer = GameObject.FindGameObjectWithTag("PhaseTimer");
+        _phaseEndIndicator = GameObject.FindGameObjectWithTag("MultiUI");
         _timerText = _timer.GetComponent<TextMeshProUGUI>();
         _phaseEndIndicator.SetActive(false);
     }
@@ -20,7 +20,7 @@ public class PhaseTimer : MonoBehaviour
         _phaseTimer -= Time.deltaTime;
         int minutes = Mathf.FloorToInt(_phaseTimer / 60);
         int seconds = Mathf.FloorToInt(_phaseTimer % 60);
-        _timerText.text = "Time Until Flood: " + "\n" + string.Format("{0:00}:{1:00}", minutes, seconds);
+        _timerText.text = "Time Until Chamber Floods: " + "\n" + string.Format("{0:00}:{1:00}", minutes, seconds);
 
         if (_phaseTimer <= 0)
         {

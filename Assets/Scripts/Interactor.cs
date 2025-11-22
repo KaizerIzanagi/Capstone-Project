@@ -15,7 +15,7 @@ public class Interactor : MonoBehaviour
 
     private void Awake()
     {
-        _pickupPrompt = GameObject.Find("Pickup Prompt");
+        _pickupPrompt = GameObject.FindGameObjectWithTag("PromptUI");
         _pickupText = _pickupPrompt.GetComponent<TextMeshProUGUI>();
         _pickupPrompt.SetActive(false);
     }
@@ -32,8 +32,11 @@ public class Interactor : MonoBehaviour
             {
                 interactable.Interact(this);
             }
-            _pickupText.text = interactable.InteractionPrompt;
+
+            _pickupText.text = "Press E to interact "; //+ _colliders[0].name;
             _pickupPrompt.SetActive(true);
+            return;
+
         }
         else
         {

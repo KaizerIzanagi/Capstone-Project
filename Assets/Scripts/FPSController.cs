@@ -30,6 +30,10 @@ public class FPSController : MonoBehaviour
     [SerializeField] private GameObject _staminaObj;
     [SerializeField] private TextMeshProUGUI _staminaText;
 
+    [Header("Bools player will hold temporarily")]
+    public bool isElectrified;
+    public bool isPlayerInWater;
+
     public bool onWater = false;
 
     private Camera _mainCamera;
@@ -38,7 +42,7 @@ public class FPSController : MonoBehaviour
     private CharacterController _characterController;
     void Awake()
     {
-        _stamina = 100f;
+        _stamina = 100;
         _staminaObj = GameObject.Find("Stamina");
         _staminaText = _staminaObj.GetComponent<TextMeshProUGUI>();
         _characterController = GetComponent<CharacterController>();
@@ -53,7 +57,7 @@ public class FPSController : MonoBehaviour
         HandleMovement();
         HandleRotation();
 
-        _staminaText.text = ("Stamina: " + _stamina);
+        _staminaText.text = ("Stamina: " + Mathf.Round(_stamina));
     }
 
     void HandleMovement()
